@@ -1,4 +1,3 @@
-/structural-patterns/structural-patterns.iml
-/.idea/compiler.xml
-/.idea/jarRepositories.xml
-/behavioral-patterns/behavioral-patterns.iml
+**/*.iml
+/.idea/**
+**/target
