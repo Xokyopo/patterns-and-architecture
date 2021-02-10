@@ -18,6 +18,7 @@
     <modules>
         <module>structural-patterns</module>
         <module>behavioral-patterns</module>
+        <module>architectural-system-patterns</module>
     </modules>
     
 </project>
