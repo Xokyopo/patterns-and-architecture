@@ -43,4 +43,13 @@ public class Field {
         Field field = (Field) obj;
         return this.valueType.equals(field.valueType) && this.value.equals(field.value) && this.name.equals(field.name);
     }
+
+    @Override
+    public String toString() {
+        return "Field{" +
+                "name='" + name + '\'' +
+                ", value=" + value +
+                ", valueType=" + valueType.getSimpleName() +
+                '}';
+    }
 }
