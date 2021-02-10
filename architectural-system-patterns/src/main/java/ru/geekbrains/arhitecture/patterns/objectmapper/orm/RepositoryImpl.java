@@ -17,10 +17,13 @@ public class RepositoryImpl<E> implements Repository<E> {
     private String deletePrepQuery;
     private String updatePrepQuery;
     private String insertPrepQuery;
+    private final Connectable dbConnection;
 
-    public RepositoryImpl(Mapper<E> mapper, String tableName) {
+    public RepositoryImpl(Connectable dbConnection, Mapper<E> mapper, String tableName) {
+        if (dbConnection == null) throw new IllegalArgumentException("dvConnection not set");
         if (mapper == null) throw new IllegalArgumentException("Mapper can't be null");
 
+        this.dbConnection = dbConnection;
         this.mapper = mapper;
         this.tableName = (tableName.isBlank()) ? this.getClass().getSimpleName() : tableName;
 
@@ -62,8 +65,7 @@ public class RepositoryImpl<E> implements Repository<E> {
     }
 
     private Connection getConnection() {
-        //TODO
-        return (Connection) new Object();
+        return this.dbConnection.getConnection();
     }
 
     @Override
