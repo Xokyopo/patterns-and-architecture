@@ -28,12 +28,17 @@ public class RepositoryImpl<E> implements Repository<E> {
         this.tableName = (tableName.isBlank()) ? this.getClass().getSimpleName() : tableName;
 
         this.initSqlQueryTemplates();
+
+//        System.out.println("selectAllQuery = " + selectAllQuery);
+//        System.out.println("deletePrepQuery = " + deletePrepQuery);
+//        System.out.println("updatePrepQuery = " + updatePrepQuery);
+//        System.out.println("insertPrepQuery = " + insertPrepQuery);
     }
 
     private void initSqlQueryTemplates() {
         E emptyEntity = this.mapper.getEmptyElement();
         List<Field> fields = this.mapper.getAllFields(emptyEntity);
-        List<Field> id = this.mapper.getAllFields(emptyEntity);
+        List<Field> id = this.mapper.getID(emptyEntity);
         List<Field> fieldsWithoutId = fields.stream().filter(field -> id.stream().noneMatch(field::equals)).collect(Collectors.toList());
 
         this.selectAllQuery = String.format(
@@ -57,7 +62,7 @@ public class RepositoryImpl<E> implements Repository<E> {
                 "INSERT INTO %s (%s) VALUES (%s)",
                 this.tableName,
                 this.getFieldsAsString(fields, "%s, %s"),
-                this.getFieldsAsString(fields, "%s, %s").replaceAll("[^,]*", "?"));
+                this.getFieldsAsString(fields, "?, ?"));
     }
 
     private String getFieldsAsString(List<Field> fields, String reducedSchema) {
