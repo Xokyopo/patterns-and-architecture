@@ -3,13 +3,14 @@ package ru.geekbrains.arhitecture.patterns.objectmapper.dao;
 import ru.geekbrains.arhitecture.patterns.objectmapper.dao.exceptions.DAOException;
 import ru.geekbrains.arhitecture.patterns.objectmapper.orm.Connectable;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class SQLiteConnection implements Connectable {
+public class SQLiteConnection implements Connectable, Closeable {
     private String diverName;
     private String connectionString;
 
@@ -38,6 +39,7 @@ public class SQLiteConnection implements Connectable {
         return connection;
     }
 
+    @Override
     public void close() {
         if (connection != null) {
             try {
