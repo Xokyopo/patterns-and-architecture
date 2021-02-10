@@ -1,5 +1,7 @@
 package ru.geekbrains.arhitecture.patterns.objectmapper.orm.mappers;
 
+import java.util.Objects;
+
 public class Field {
     private String name;
     private Object value;
@@ -41,7 +43,10 @@ public class Field {
         if (!(obj instanceof Field)) return false;
 
         Field field = (Field) obj;
-        return this.valueType.equals(field.valueType) && this.value.equals(field.value) && this.name.equals(field.name);
+
+        return Objects.equals(this.valueType, field.value)
+                && Objects.equals(this.value, field.value)
+                && Objects.equals(this.name, field.name);
     }
 
     @Override
