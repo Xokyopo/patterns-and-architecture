@@ -1,4 +1,4 @@
-package ru.geekbrains.arhitecture.patterns.objectmapper.dao.mappers.template;
+package ru.geekbrains.arhitecture.patterns.objectmapper.orm.mappers;
 
 public class Field {
     private String name;
