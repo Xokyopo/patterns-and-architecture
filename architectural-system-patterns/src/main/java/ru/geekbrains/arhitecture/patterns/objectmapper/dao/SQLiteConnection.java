@@ -1,7 +1,7 @@
 package ru.geekbrains.arhitecture.patterns.objectmapper.dao;
 
 import ru.geekbrains.arhitecture.patterns.objectmapper.dao.exceptions.DAOException;
-import ru.geekbrains.arhitecture.patterns.objectmapper.orm.Connectable;
+import ru.geekbrains.arhitecture.patterns.objectmapper.dao.orm.Connectable;
 
 import java.io.Closeable;
 import java.io.IOException;
