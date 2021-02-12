@@ -1,16 +1,14 @@
-package ru.geekbrains.arhitecture.patterns.objectmapper.orm.mappers;
+package ru.geekbrains.arhitecture.patterns.objectmapper.dao.orm.mappers;
 
 import java.util.Objects;
 
 public class Field {
     private String name;
     private Object value;
-    private Class<?> valueType;
 
-    public Field(String name, Object value, Class<?> valueType) {
+    public Field(String name, Object value) {
         this.name = name;
         this.value = value;
-        this.valueType = valueType;
     }
 
     public String getName() {
@@ -29,13 +27,6 @@ public class Field {
         this.value = value;
     }
 
-    public Class<?> getValueType() {
-        return valueType;
-    }
-
-    public void setValueType(Class<?> valueType) {
-        this.valueType = valueType;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -44,17 +35,14 @@ public class Field {
 
         Field field = (Field) obj;
 
-        return Objects.equals(this.valueType, field.value)
-                && Objects.equals(this.value, field.value)
-                && Objects.equals(this.name, field.name);
+        return Objects.equals(this.value, field.value) && Objects.equals(this.name, field.name);
     }
 
     @Override
     public String toString() {
         return "Field{" +
                 "name='" + name + '\'' +
-                ", value=" + value +
-                ", valueType=" + valueType.getSimpleName() +
+                ", value='" + value + '\'' +
                 '}';
     }
 }
