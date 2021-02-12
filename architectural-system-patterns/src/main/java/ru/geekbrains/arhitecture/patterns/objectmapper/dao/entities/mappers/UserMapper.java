@@ -1,23 +1,21 @@
 package ru.geekbrains.arhitecture.patterns.objectmapper.dao.entities.mappers;
 
 import ru.geekbrains.arhitecture.patterns.objectmapper.dao.entities.User;
-import ru.geekbrains.arhitecture.patterns.objectmapper.orm.mappers.Field;
-import ru.geekbrains.arhitecture.patterns.objectmapper.orm.mappers.Mapper;
+import ru.geekbrains.arhitecture.patterns.objectmapper.dao.orm.mappers.Field;
+import ru.geekbrains.arhitecture.patterns.objectmapper.dao.orm.mappers.Mapper;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class UserMapper implements Mapper<User> {
     @Override
-    public User createFromFields(List<Field> fields) {
+    public User create(ResultSet resultSet) throws SQLException {
         User result = new User();
 
-        Map<String, Field> stringField = fields.stream().collect(Collectors.toMap(Field::getName, field ->  field));
-
-        result.setId((Long) stringField.get("id").getValue());
-        result.setName((String) stringField.get("name").getValue());
+        result.setId(resultSet.getLong("id"));
+        result.setName(resultSet.getString("name"));
 
         return result;
     }
@@ -26,8 +24,8 @@ public class UserMapper implements Mapper<User> {
     public List<Field> getAllFields(User entity) {
         List<Field> result = new ArrayList<>();
 
-        result.add(new Field("id", entity.getId(), long.class));
-        result.add(new Field("name", entity.getName(), String.class));
+        result.add(new Field("id", entity.getId()));
+        result.add(new Field("name", entity.getName()));
 
         return result;
     }
@@ -36,7 +34,7 @@ public class UserMapper implements Mapper<User> {
     public List<Field> getID(User entity) {
         List<Field> result = new ArrayList<>();
 
-        result.add(new Field("id", entity.getId(), long.class));
+        result.add(new Field("id", entity.getId()));
 
         return result;
     }
