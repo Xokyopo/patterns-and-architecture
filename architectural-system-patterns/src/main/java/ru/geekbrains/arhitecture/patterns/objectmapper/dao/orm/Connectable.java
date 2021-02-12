@@ -1,4 +1,4 @@
-package ru.geekbrains.arhitecture.patterns.objectmapper.orm;
+package ru.geekbrains.arhitecture.patterns.objectmapper.dao.orm;
 
 import java.sql.Connection;
 
