@@ -45,4 +45,9 @@ public class Field {
                 ", value='" + value + '\'' +
                 '}';
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name, this.value);
+    }
 }
