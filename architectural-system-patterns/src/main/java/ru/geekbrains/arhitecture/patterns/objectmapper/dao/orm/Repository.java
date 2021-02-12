@@ -1,6 +1,6 @@
-package ru.geekbrains.arhitecture.patterns.objectmapper.orm;
+package ru.geekbrains.arhitecture.patterns.objectmapper.dao.orm;
 
-import ru.geekbrains.arhitecture.patterns.objectmapper.orm.mappers.Field;
+import ru.geekbrains.arhitecture.patterns.objectmapper.dao.orm.mappers.Field;
 
 import java.util.List;
 
