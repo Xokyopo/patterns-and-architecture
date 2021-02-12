@@ -1,4 +1,4 @@
-package ru.geekbrains.arhitecture.patterns.objectmapper.orm.exception;
+package ru.geekbrains.arhitecture.patterns.objectmapper.dao.orm.exception;
 
 public class UncheckedSQLException extends RuntimeException {
     public UncheckedSQLException() {
